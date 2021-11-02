@@ -7,8 +7,8 @@ const {
   DB_SCHEMA,
   DB_PASSWORD,
   API_KEY_BOARDATLAS,
-  /* BACK_PORT,
-  JWT_SALTROUNDS,
+  BACK_PORT,
+  /* JWT_SALTROUNDS,
   JWT_SECRET,
   FRONTEND_URL,
   ADMIN_URL, */
@@ -24,4 +24,5 @@ const db = mysql.createPool({
 module.exports = {
   db,
   apiBoardAtlas: API_KEY_BOARDATLAS,
+  backPort: BACK_PORT,
 };
