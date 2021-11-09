@@ -1,15 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const { backPort } = require('./conf');
-const { users, games } = require('./routes');
+const { users, games, misc } = require('./routes');
 
 const app = express();
-
-app.get('/', async (req, res) => {
-  res.send('Welcome aboard! ');
-});
+app.use(cors());
 
 app.use('/users', users);
 app.use('/games', games);
+app.use('/', misc);
 
 // 404 Error
 app.use('/', (req, res) => {
