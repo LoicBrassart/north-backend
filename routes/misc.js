@@ -19,8 +19,10 @@ router.get('/search', async (req, res) => {
   };
   for (let i = 0; i < rows.length; i += 1) {
     const row = rows[i];
-    if (results[row.type].length < 5) {
+    if (results[row.type]) {
       results[row.type].push(row);
+    } else {
+      results.others.push(row);
     }
   }
   res.json(results);
