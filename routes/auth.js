@@ -18,7 +18,7 @@ router.post('/signup', async (req, res) => {
     res.status(201).json({ user: formData, token });
   } catch (e) {
     console.log(`500 - ${e}`);
-    res.status(500).json(e);
+    res.status(500).json(e.message);
   }
 });
 
