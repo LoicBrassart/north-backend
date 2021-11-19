@@ -58,3 +58,4 @@ const scrapGames = async (recursive = false) => {
 };
 
 scrapGames(true);
+process.exit();
