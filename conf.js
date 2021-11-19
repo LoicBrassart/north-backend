@@ -8,10 +8,8 @@ const {
   DB_PASSWORD,
   API_KEY_BOARDATLAS,
   BACK_PORT,
-  /* JWT_SALTROUNDS,
+  JWT_SALTROUNDS,
   JWT_SECRET,
-  FRONTEND_URL,
-  ADMIN_URL, */
 } = process.env;
 
 const db = mysql.createPool({
@@ -25,4 +23,6 @@ module.exports = {
   db,
   apiBoardAtlas: API_KEY_BOARDATLAS,
   backPort: BACK_PORT,
+  jwtRounds: parseInt(JWT_SALTROUNDS, 10),
+  jwtSecret: JWT_SECRET,
 };
