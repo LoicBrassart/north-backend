@@ -1,11 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+const passport = require('passport');
 const { backPort } = require('./conf');
-const { games, groups, parties, users, news, misc } = require('./routes');
+const { auth, games, groups, parties, users, news, misc } = require('./routes');
 
 const app = express();
+app.use(express.json());
+app.use(passport.initialize());
 app.use(cors());
 
+app.use('/auth', auth);
 app.use('/games', games);
 app.use('/groups', groups);
 app.use('/news', news);
@@ -15,7 +19,9 @@ app.use('/', misc);
 
 // 404 Error
 app.use('/', (req, res) => {
-  res.status(404).send(`Route not found: ${req.method} ${req.url} `);
+  const msg = `Page not found: ${req.method} ${req.url}`;
+  console.log(`404 - ${msg}`);
+  res.status(404).send(msg);
 });
 
 app.listen(backPort, () => {
