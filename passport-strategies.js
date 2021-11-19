@@ -18,11 +18,11 @@ passport.use(
           [formMail]
         );
         if (!sqlRes.length) return done(null, false, 'Wrong email!');
-        const { id, email, pseudo, password } = sqlRes[0];
+        const { id, email, pseudo, password, avatar } = sqlRes[0];
         const isPasswordOK = bcrypt.compareSync(formPassword, password);
         if (!isPasswordOK) return done(null, false, 'Wrong password!');
 
-        const user = { id, email, pseudo };
+        const user = { id, email, pseudo, avatar };
         return done(null, user);
       } catch (e) {
         console.log(`??? - ${e}`);
